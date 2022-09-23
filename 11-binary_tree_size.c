@@ -1,40 +1,22 @@
 #include "binary_trees.h"
-
-void traverse(const binary_tree_t *tree, size_t *count);
-
 /**
- * binary_tree_size - get the size of a binary tree
- * @tree: tree to check
+ * binary_tree_size - a function that measures size of a tree
+ * @tree: pointer to the root node of the tree
  *
- * Return: size of tree
+ * Return: returns size of the tree or 0
  */
 
 size_t binary_tree_size(const binary_tree_t *tree)
 {
-	size_t count = 0;
+	size_t left_height;
+	size_t right_height;
 
-	if (!tree)
-		return (count);
-	traverse(tree, &count);
-	return (count);
-}
+	if (tree == NULL)
+		return (0);
 
 
-/**
- * traverse - goes through a binary tree using in-order traversal
- * @tree: a pointer to the root node of the tree to traverse
- * @count: current count of tree size during traversal
- */
+	left_height = binary_tree_size(tree->left);
+	right_height = binary_tree_size(tree->right);
 
-void traverse(const binary_tree_t *tree, size_t *count)
-{
-	if (tree->left)
-	{
-		traverse(tree->left, count);
-	}
-	*count += 1;
-	if (tree->right)
-	{
-		traverse(tree->right, count);
-	}
+	return (left_height + right_height + 1);
 }
