@@ -12,7 +12,7 @@ size_t normal_depth(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	
+
 	node_depth = normal_depth(tree->parent);
 
 	return (node_depth + 1);
